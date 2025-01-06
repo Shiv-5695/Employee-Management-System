@@ -1,0 +1,33 @@
+/* Remove the default caret from the Dropdown.Toggle */
+#dropdown-split-basic::after {
+    display: none !important;
+}
+
+/* Style the custom toggle button with vertical dots */
+.vertical-dots-toggle {
+    background-color: transparent !important; /* Ensure background is transparent */
+    border: none !important; /* Ensure border is removed */
+    padding: 0.5rem; /* Adjust padding if needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black !important; /* Set the color of the dots to black */
+}
+
+/* Remove the blue color for focus, active, and hover states */
+.vertical-dots-toggle:focus,
+.vertical-dots-toggle:active,
+.vertical-dots-toggle:hover {
+    outline: none !important; /* Ensure focus outline is removed */
+    box-shadow: none !important; /* Ensure shadow is removed */
+    background-color: transparent !important; /* Ensure background stays transparent */
+    color: black !important; /* Keep dots black */
+}
+
+/* Style the vertical dots */
+.vertical-dots {
+    font-size: 1.5rem; /* Adjust the size of the vertical dots */
+    font-weight: bold;
+    cursor: pointer; /* Make it appear clickable */
+    margin: 20px;
+}

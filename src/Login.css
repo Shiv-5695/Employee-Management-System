@@ -1,0 +1,81 @@
+/* Container for the login form */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Logo section */
+  .logo {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .logo h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .logo span {
+    color: #ff007f; /* Bright pink color */
+  }
+  
+  /* Login box */
+  .login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .options {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff007f; /* Bright pink color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #e6006e;
+  }
+  
+  .links {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .links a {
+    color: #ff007f;
+    text-decoration: none;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+  
