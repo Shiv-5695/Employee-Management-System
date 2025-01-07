@@ -8,40 +8,32 @@ const NewDetail = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.target);
-    const formValues = Object.fromEntries(data.entries());
+    const formData = new FormData(event.target);
+    const formValues = Object.fromEntries(formData.entries());
 
-    // Validate dateOfJoining
-    const dateOfJoining = formValues.dateOfJoining;
-    let formattedDateOfJoining;
-    if (dateOfJoining) {
-      try {
-        formattedDateOfJoining = new Date(dateOfJoining).toISOString();
-      } catch {
-        setError("Invalid Date of Joining format. Please select a valid date.");
-        return;
+    // Ensure date fields are in ISO format
+    const dateFields = ["birthday", "dateOfJoining"];
+    dateFields.forEach((field) => {
+      const dateValue = formValues[field];
+      if (dateValue) {
+        formValues[field] = new Date(dateValue).toISOString();
       }
-    } else {
-      setError("Date of Joining is required.");
-      return;
-    }
+    });
 
-    // Construct payload
+    // Construct payload with flattened structure
     const payload = {
       CreatedBy: "Admin", // Replace with dynamic user data if needed
-      dateOfJoining: formattedDateOfJoining,
+      dateOfJoining: formValues.dateOfJoining,
       email: formValues.email,
       mobile: formValues.mobile,
       phone: formValues.phone,
       birthday: formValues.birthday,
       department: formValues.department,
-      employee: {
-        title: formValues.title,
-        firstName: formValues.firstName,
-        middleName: formValues.middleName,
-        lastName: formValues.lastName,
-        shortName: formValues.shortName,
-      },
+      title: formValues.title,
+      firstName: formValues.firstName,
+      middleName: formValues.middleName,
+      lastName: formValues.lastName,
+      shortName: formValues.shortName,
     };
 
     try {
@@ -69,15 +61,9 @@ const NewDetail = () => {
 
   return (
     <div className="form-container">
-      <header>
-        <h1>Basic</h1>
-        <nav>
-          <a href="/home">Home</a> &gt; <a href="/new">New</a>
-        </nav>
-      </header>
-
-      <div className="tabs">
-        <button className="active-tab">Details</button>
+   
+     <div className="tabs">
+        <button className="active-tab">Detail Form</button>
       </div>
 
       <h2>User Details</h2>
@@ -87,22 +73,24 @@ const NewDetail = () => {
           <div className="form-group full-width">
             <label>Name</label>
             <div className="name-fields">
-              <select name="title">
+              <select name="title" required>
+                <option value="">Select Title</option>
                 <option value="Mr">Mr</option>
                 <option value="Mrs">Mrs</option>
               </select>
-              <input type="text" name="firstName" placeholder="First Name" />
-              <input type="text" name="middleName" placeholder="Middle Name" />
-              <input type="text" name="lastName" placeholder="Last Name" />
+              <input type="text" name="firstName" placeholder="First Name" required />
+              <input type="text" name="middleName" placeholder="Middle Name" required />
+              <input type="text" name="lastName" placeholder="Last Name" required />
             </div>
           </div>
+          <br/>
           <div className="form-group">
             <label>Short Name</label>
-            <input type="text" name="shortName" placeholder="Short Name" />
+            <input type="text" name="shortName" placeholder="Short Name" required />
           </div>
           <div className="form-group">
             <label>Date of Joining</label>
-            <input type="date" name="dateOfJoining" />
+            <input type="date" name="dateOfJoining" required />
           </div>
           <div className="form-group">
             <label>Email ID</label>
@@ -118,7 +106,7 @@ const NewDetail = () => {
           </div>
           <div className="form-group">
             <label>Date of Birth</label>
-            <input type="date" name="birthday" />
+            <input type="date" name="birthday" required />
           </div>
           <div className="form-group">
             <label>Department</label>
@@ -130,7 +118,7 @@ const NewDetail = () => {
           <button type="button" onClick={() => navigate("/new")}>
             Save & New
           </button>
-          <button type="button" onClick={() => navigate("/home")}>
+          <button type="button" onClick={() => navigate("/employee-details")}>
             Cancel
           </button>
         </div>

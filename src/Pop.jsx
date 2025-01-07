@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import "./Popup.css";
 
-const Pop = () => {
+const Pop = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
     setIsOpen(false);
+    if (onClose) onClose(); // Call the parent close handler
   };
 
   const handleConfirm = () => {
     alert("Confirmed!");
     setIsOpen(false);
+    if (onClose) onClose(); // Call the parent close handler
   };
 
   return (

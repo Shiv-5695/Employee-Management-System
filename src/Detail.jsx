@@ -19,9 +19,6 @@ const Detail = () => {
     <div className="detail-container">
       <header>
         <h1>Basic</h1>
-        <nav>
-          <a href="/home">Home</a> &gt; <span>Detail</span>
-        </nav>
         <div className="actions">
           <button onClick={newFro}>New</button>
           <button>Print</button>
@@ -31,7 +28,7 @@ const Detail = () => {
       </header>
 
       <div className="tabs">
-        <button className="active-tab">Details</button>
+        <button className="active-tab">Details Page</button>
       </div>
 
       <h2>Key Information</h2>
